@@ -12,6 +12,7 @@ const Home = () => {
         setData(response);
       } catch (error) {
         console.error(error);
+        alert('Something went wrong...')
       }
     };
 
