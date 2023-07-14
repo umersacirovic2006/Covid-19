@@ -1,18 +1,20 @@
-import React from 'react'
+import React from "react";
 import "./index.scss";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
   return (
-    <div className='Nav'>
-      <div className='logo'>Some logo</div>
-      <div className='nav-links'>
-        <ul>
-          <li>some</li>
-          <li>links</li>
-        </ul>
+    <div className="Nav">
+      <NavLink to="/">
+        <img src="https://iili.io/QOYltf.md.png" alt="covid" />
+      </NavLink>
+      <div className="nav-links">
+        <NavLink to="/countries">COUNTRIES</NavLink>
+        <NavLink to="/country">COUNTRY</NavLink>
+        <NavLink to="/about">ABOUT</NavLink>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;
