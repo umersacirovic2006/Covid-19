@@ -15,6 +15,7 @@ const api = axios.create({
 export const fetchCounteries = async () => {
   try {
     const response = await api.get('/countries');
+    return response.data; 
     console.log(response.data);
   } catch (error) {
     console.error(error);
