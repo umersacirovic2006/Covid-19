@@ -18,7 +18,7 @@ const Countries = () => {
       } catch (error) {
         console.error(error);
       }
-    };
+    };git
 
     fetchCountries();
   }, []);
