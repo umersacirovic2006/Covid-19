@@ -9,8 +9,8 @@ const Nav = () => {
         <img src="https://iili.io/QOYltf.md.png" alt="covid" />
       </NavLink>
       <div className="nav-links">
-        <NavLink to="/countries">COUNTRIES</NavLink>
         <NavLink to="/country">COUNTRY</NavLink>
+        <NavLink to="/covid-stats">COVID STATS</NavLink>
         <NavLink to="/about">ABOUT</NavLink>
       </div>
     </div>

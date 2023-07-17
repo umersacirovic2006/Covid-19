@@ -2,12 +2,23 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import "./index.scss";
 import { fetchCounteries, fetchHistory, fetchStatistics } from '../../api/api';
+import { countryListAllIsoData } from '../../country-acronyms';
 
-const Countries = () => {
+const Country = () => {
   const [data, setData] = useState(null);
   const [country, setCountry] = useState('Serbia');
   const [date, setDate] = useState(getFormattedDate());
   const [countries, setCountries] = useState([]);
+
+  const findCountryCodeByName = (countryName) => {
+    const country = countryListAllIsoData.find(
+      (country) => country.name.toLowerCase() === countryName.toLowerCase()
+    );
+  
+    return country && country.code ? country.code.toLowerCase() : null;
+  };
+
+  const countryCode = findCountryCodeByName(country);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -18,11 +29,11 @@ const Countries = () => {
       } catch (error) {
         console.error(error);
       }
-    };git
+    };
 
     fetchCountries();
   }, []);
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,43 +66,55 @@ const Countries = () => {
   if (!data) {
     return null;
   }
-
   return (
-    <div>
-      <label>
-        Country:
-        <select value={country} onChange={handleCountryChange}>
-          <option value="">Select a country</option>
-          {countries.map((countryName) => (
-            <option key={countryName} value={countryName}>
-              {countryName}
-            </option>
-          ))}
-        </select>
-      </label>
-      <br />
-      <label>
-        Date:
-        <input type="date" value={date} onChange={handleDateChange} />
-      </label>
+    
+    <div className='country-stat'>
+      <div className="inputs">
+        <label>
+          Country:
+          <select value={country} onChange={handleCountryChange}>
+            <option value="">Select a country</option>
+            {countries.map((countryName) => (
+              <option key={countryName} value={countryName}>
+                {countryName}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Date:
+          <input type="date" value={date} onChange={handleDateChange} />
+        </label>
+      </div>
 
-      <h2>COVID-19 Data for {data.country}</h2>
-      <p>Continent: {data.continent}</p>
-      <p>Total cases: {data.cases.total}</p>
-      <p>New cases: {data.cases.new}</p>
-      <p>Active cases: {data.cases.active}</p>
-      <p>Critical cases: {data.cases.critical}</p>
-      <p>Recovered cases: {data.cases.recovered}</p>
-      <p>Cases per million population: {data.cases['1M_pop']}</p>
-      <p>Total deaths: {data.deaths.total}</p>
-      <p>New deaths: {data.deaths.new}</p>
-      <p>Deaths per million population: {data.deaths['1M_pop']}</p>
-      <p>Population: {data.population}</p>
-      <p>Total tests: {data.tests.total}</p>
-      <p>Tests per million population: {data.tests['1M_pop']}</p>
-      <p>Last updated: {data.time}</p>
+      <div className="country-data">
+        <span className='country-name'>
+        <img src={`https://flagcdn.com/w320/${countryCode}.png`}></img>
+          <p >{data.country}</p>
+        </span>
+        <span>
+          <div className="info-display">
+          <p style={{color:(data.cases.new >200) ? "red" : "green"  }} >{data.cases.new}</p>
+          <p>New cases:</p>
+          </div>
+          <div className="info-display">
+          <p style={{color:(data.cases.recovered >200) ? "green" : "red"  }}>{data.cases.recovered}</p>
+          <p>Recovered cases:</p>
+          </div>
+          <div className="info-display">
+          <p style={{color:(data.deaths.new >200) ? "red" : "green"  }}>{(data.deaths.new === null ) ? "/" : data.deaths.new}</p>
+          <p>New deaths:</p>
+          </div>
+        </span>
+        <span>
+          <div className="info-display">
+            <p style={{color:(data.cases.active >200) ? "red" : "green"  }}> {data.cases.active}</p>
+            <p>Active cases:</p>
+          </div>
+        </span>
+      </div>
     </div>
   );
 };
 
-export default Countries
+export default Country
