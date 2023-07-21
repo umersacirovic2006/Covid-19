@@ -3,9 +3,9 @@ import './App.scss'
 import Nav from './components/Nav/Nav'
 import Home from './Pages/Home/Home'
 import About from './Pages/About/About'
-import Countries from './Pages/Countries/Countries'
-import Country from './Pages/Country/Country'
+import CovidStats from './Pages/Country/Country'
 import Footer from './components/Footer/Footer'
+import Country from './Pages/Countries/Countries'
 
 function App() {
   return (
@@ -13,9 +13,9 @@ function App() {
       <Nav />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/countries' element={<Countries />} />
-        <Route path='/about' element={<About />} />
         <Route path='/country' element={<Country />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/covid-stats' element={<CovidStats />} />
       </Routes>
       <Footer />
     </div>
