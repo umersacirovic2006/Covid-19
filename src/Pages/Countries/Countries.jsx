@@ -89,7 +89,7 @@ const Country = () => {
 
       <div className="country-data">
         <span className='country-name'>
-        <img src={`https://flagcdn.com/w320/${countryCode}.png`}></img>
+        
           <p >{data.country}</p>
         </span>
         <span>

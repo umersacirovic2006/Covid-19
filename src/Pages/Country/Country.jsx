@@ -59,7 +59,7 @@ const CovidStats = () => {
             <div className='country-card' key={index}>
               <div className="country-data">
                 <div className="country-name">
-                  <p className='name'>
+                  <p className='name1'>
                     <span className='stat'>{item.country}</span>{' '}
                   </p>
                   
