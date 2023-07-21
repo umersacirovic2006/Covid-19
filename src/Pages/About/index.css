@@ -148,6 +148,10 @@
     height: 500px;
     transition: 0.8s;
 }
+.cardText2:hover .imgS{
+    margin-top: -50px;
+    transition: 0.8s;
+}
 .cardText2:hover .text {
     border:  none;
     width: 400px;
@@ -193,4 +197,8 @@
     transition: opacity 0.3s ease;
     transition: 0.5s;
     animation: textanim 1s ease 0s 1 normal forwards;
+}
+.cardText3:hover .imgS{
+    margin-top: -50px;
+    transition: 0.8s;
 }
