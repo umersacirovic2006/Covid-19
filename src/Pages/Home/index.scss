@@ -33,6 +33,7 @@
         border: 0.8px solid black;
         border-radius: 7px;
         cursor: default;
+        transition: 0.5s;
 
         &:hover {
           transform: scale(1.1);
