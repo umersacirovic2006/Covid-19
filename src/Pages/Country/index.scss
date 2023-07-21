@@ -1,86 +1,74 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .countries-page {
-    background-image: url(../../images/stacked-waves-haikei.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url(../../images/stacked-waves-haikei.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .pagination {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 100vw;
+  }
 
-    .pagination {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: white;
-        width: 100vw;
+  .country-card {
+    &:hover {
+      transform: scale(1.05);
     }
+    transition: 0.2s ease-in-out;
+    border-radius: 1vw;
+    border: 2px solid lightblue;
+    overflow: hidden;
+    display: flex;
+    margin: 10px;
+    background-color: white;
+    justify-content: space-between;
+    width: 60%;
+    height: 200px;
 
+    .country-data {
+      flex: 1;
+      padding: 2%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
 
-    .country-card {
+      .country-name {
+        height: auto;
+        text-align: center;
+        font-size: 30px;
+      }
 
-        &:hover{
-            transform: scale(1.05);
-        }
-        transition: 0.2s ease-in-out;
-        border-radius: 1vw;
-        border: 2px solid lightblue;
-        overflow: hidden;
+      .country-stats {
         display: flex;
-        margin: 10px;
-        background-color: white;
         justify-content: space-between;
-        width: 60%;
-        height: 200px;
 
-        .country-data {
-            flex: 1;
-            padding: 2%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-
-            .country-name {
-                height: auto;
-                text-align: center;
-                font-size: 30px;
-            }
-
-            .country-stats {
-
-                display: flex;
-                justify-content: space-between;
-
-                p {
-
-                    border-radius: 1vw;
-                    padding: 1%;
-                    font-size: 18px;
-                    font-weight: bold;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    border-width: 4px;
-                    border-color:lightblue;
-                    border-style: double;
-
-                }
-            }
-
-
+        p {
+          border-radius: 1vw;
+          padding: 1%;
+          font-size: 18px;
+          font-weight: bold;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border-width: 4px;
+          border-color: lightblue;
+          border-style: double;
         }
-
-
-
-
-        img {
-            width: 30%;
-        }
-
-
+      }
     }
+
+    img {
+      width: 30%;
+    }
+  }
 }

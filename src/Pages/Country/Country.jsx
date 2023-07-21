@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { fetchCounteries, fetchStatistics } from '../../api/api';
-import './index.scss';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import { countryListAllIsoData } from '../../country-acronyms';
+import React, { useState, useEffect, useRef } from "react";
+import { fetchCounteries, fetchStatistics } from "../../api/api";
+import "./index.scss";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import { countryListAllIsoData } from "../../country-acronyms";
 
 const CovidStats = () => {
   const [data, setData] = useState(null);
@@ -26,7 +26,7 @@ const CovidStats = () => {
 
   useEffect(() => {
     if (pageRef.current) {
-      pageRef.current.scrollIntoView({ behavior: 'smooth' });
+      pageRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [currentPage]);
 
@@ -56,35 +56,36 @@ const CovidStats = () => {
           const countryCode = findCountryCodeByName(item.country);
 
           return (
-            <div className='country-card' key={index}>
+            <div className="country-card" key={index}>
               <div className="country-data">
                 <div className="country-name">
-                  <p className='name1'>
-                    <span className='stat'>{item.country}</span>{' '}
+                  <p className="name1">
+                    <span className="stat">{item.country}</span>{" "}
                   </p>
-                  
                 </div>
-                <div className='country-stats'>
+                <div className="country-stats">
                   <p>
-                    Population: <span className='stat'>{item.population}</span>
+                    Population: <span className="stat">{item.population}</span>
                   </p>
                   <p>
                     New Cases:
-                    <span className='stat'>
-                      {(item.cases.new === null) ? '0' : item.cases.new}
+                    <span className="stat">
+                      {item.cases.new === null ? "0" : item.cases.new}
                     </span>
                   </p>
                   <p>
-                    Total Deaths:{' '}
-                    <span className='stat'>
-                      {(item.deaths.total === null) ? "/" : item.deaths.total}
+                    Total Deaths:{" "}
+                    <span className="stat">
+                      {item.deaths.total === null ? "/" : item.deaths.total}
                     </span>
                   </p>
                 </div>
               </div>
 
-              <img src={`https://flagcdn.com/w320/${countryCode}.png`} alt={item.country} />
-
+              <img
+                src={`https://flagcdn.com/w320/${countryCode}.png`}
+                alt={item.country}
+              />
             </div>
           );
         })}

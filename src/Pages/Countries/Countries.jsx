@@ -1,12 +1,12 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
+import React from "react";
+import { useState, useEffect } from "react";
 import "./index.scss";
-import { fetchCounteries, fetchHistory, fetchStatistics } from '../../api/api';
-import { countryListAllIsoData } from '../../country-acronyms';
+import { fetchCounteries, fetchHistory, fetchStatistics } from "../../api/api";
+import { countryListAllIsoData } from "../../country-acronyms";
 
 const Country = () => {
   const [data, setData] = useState(null);
-  const [country, setCountry] = useState('Serbia');
+  const [country, setCountry] = useState("Serbia");
   const [date, setDate] = useState(getFormattedDate());
   const [countries, setCountries] = useState([]);
 
@@ -14,7 +14,7 @@ const Country = () => {
     const country = countryListAllIsoData.find(
       (country) => country.name.toLowerCase() === countryName.toLowerCase()
     );
-  
+
     return country && country.code ? country.code.toLowerCase() : null;
   };
 
@@ -33,7 +33,7 @@ const Country = () => {
 
     fetchCountries();
   }, []);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -58,17 +58,17 @@ const Country = () => {
   function getFormattedDate() {
     const today = new Date();
     const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`;
   }
 
   if (!data) {
     return null;
   }
+
   return (
-    
-    <div className='country-stat'>
+    <div className="country-stat">
       <div className="inputs">
         <label>
           Country:
@@ -88,27 +88,35 @@ const Country = () => {
       </div>
 
       <div className="country-data">
-        <span className='country-name'>
-        
-          <p >{data.country}</p>
+        <span className="country-name">
+          <p>{data.country}</p>
         </span>
         <span>
           <div className="info-display">
-          <p style={{color:(data.cases.new >200) ? "red" : "green"  }} >{data.cases.new}</p>
-          <p>New cases:</p>
+            <p style={{ color: data.cases.new > 200 ? "red" : "green" }}>
+              {data.cases.new}
+            </p>
+            <p>New cases:</p>
           </div>
           <div className="info-display">
-          <p style={{color:(data.cases.recovered >200) ? "green" : "red"  }}>{data.cases.recovered}</p>
-          <p>Recovered cases:</p>
+            <p style={{ color: data.cases.recovered > 200 ? "green" : "red" }}>
+              {data.cases.recovered}
+            </p>
+            <p>Recovered cases:</p>
           </div>
           <div className="info-display">
-          <p style={{color:(data.deaths.new >200) ? "red" : "green"  }}>{(data.deaths.new === null ) ? "/" : data.deaths.new}</p>
-          <p>New deaths:</p>
+            <p style={{ color: data.deaths.new > 200 ? "red" : "green" }}>
+              {data.deaths.new === null ? "/" : data.deaths.new}
+            </p>
+            <p>New deaths:</p>
           </div>
         </span>
         <span>
           <div className="info-display">
-            <p style={{color:(data.cases.active >200) ? "red" : "green"  }}> {data.cases.active}</p>
+            <p style={{ color: data.cases.active > 200 ? "red" : "green" }}>
+              {" "}
+              {data.cases.active}
+            </p>
             <p>Active cases:</p>
           </div>
         </span>
@@ -117,4 +125,4 @@ const Country = () => {
   );
 };
 
-export default Country
+export default Country;
